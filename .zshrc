@@ -1,9 +1,3 @@
-#  ____ _____
-# |  _ \_   _|  Derek Taylor (DistroTube)
-# | | | || |    http://www.youtube.com/c/DistroTube
-# | |_| || |    http://www.gitlab.com/dwt1/
-# |____/ |_|
-# My zsh config. Not much to see here; just some pretty standard stuff.
 
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
@@ -202,9 +196,6 @@ alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
-# Merge Xresources
-alias merge='xrdb -merge ~/.Xresources'
-
 # git
 alias addup='git add -u'
 alias addall='git add .'
@@ -218,6 +209,9 @@ alias push='git push origin'
 alias stat='git status'  # 'status' is protected name so using 'stat' instead
 alias tag='git tag'
 alias newtag='git tag -a'
+
+# batcat
+alias cat='bat --paging=never'
 
 # get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -238,45 +232,8 @@ alias playavi='vlc *.avi'
 alias playmov='vlc *.mov'
 alias playmp4='vlc *.mp4'
 
-# yt-dlp
-alias yta-aac="yt-dlp --extract-audio --audio-format aac "
-alias yta-best="yt-dlp --extract-audio --audio-format best "
-alias yta-flac="yt-dlp --extract-audio --audio-format flac "
-alias yta-m4a="yt-dlp --extract-audio --audio-format m4a "
-alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
-alias yta-opus="yt-dlp --extract-audio --audio-format opus "
-alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
-alias yta-wav="yt-dlp --extract-audio --audio-format wav "
-alias ytv-best="yt-dlp -f bestvideo+bestaudio "
-
-# switch between shells
-# I do not recommend switching default SHELL from bash.
-alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
-
 # bare git repo alias for dotfiles
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
-
-# termbin
-alias tb="nc termbin.com 9999"
-
-# the terminal rickroll
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
-# Unlock LBRY tips
-alias tips='lbrynet txo spend --type=support --is_not_my_input --blocking'
-
-### DTOS ###
-# Copy/paste all content of /etc/dtos over to home folder. A backup of config is created. (Be careful running this!)
-alias dtoscopy='[ -d ~/.config ] || mkdir ~/.config && cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/dtos/* ~'
-# Backup contents of /etc/dtos to a backup folder in $HOME.
-alias dtosbackup='cp -Rf /etc/dtos ~/dtos-backup-$(date +%Y.%m.%d-%H.%M.%S)'
-
-### RANDOM COLOR SCRIPT ###
-# Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
-# Or install it from the Arch User Repository: shell-color-scripts
-colorscript random
 
 ### BASH INSULTER (works in zsh though) ###
 if [ -f /etc/bash.command-not-found ]; then
